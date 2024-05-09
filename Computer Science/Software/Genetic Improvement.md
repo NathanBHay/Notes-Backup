@@ -1,0 +1,5 @@
+Genetic improvement (GI) is a technique for improving software through the use of [[Searching Algorithms|searching algorithms]] that encode the [[Computer Science Problems|problem]] in terms of [[Optimisation|optimisation]]. This allows for the creation of better code that adheres to some sort of cost function, such as clock cycles, speed, or memory usage. A common approach to solving genetic improvement problems is through the use of [[Evolutionary Algorithms|evolutionary computing]].
+
+GI is usually done through the generation of code which is then mutated. This mutation can involve [[Assembly|low level instructions]], in terms of assembly optimisations, or high level. After this mutation is done the code must be shown to be equivalent. This can be done through the use of:
+- **[[Testing]]**, where the accuracy of your program depends on the extensiveness of the test cases. At the cost of more cases meaning less speed.
+- **Formal verification**, which uses [[Proofs|formal proofs]] to validate program equivalency.

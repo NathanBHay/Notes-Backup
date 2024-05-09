@@ -1,0 +1,7 @@
+A **precondition** is a property of the data that must be true before code execution. This is usually in relation to whether input matches a variable type. A **post condition** is a property of the data that results from code execution. This includes a sorted list, or positive values being required. The precondition must be met by the caller, and the postcondition by the callee. **Errors** occur from not meeting these preconditions.
+
+**Defensive Programming** is a paradigm which focuses on making programs that can survive unexpected inputs. To do this **exception handling** is done as to catch and throw errors. An **exception** is any error that breaks the normal flow of execution. This exception results in a **handler** being called to resolve the error.
+
+[[Python]] uses **try**, **except**, **else**, and **finally** to handle errors. **Try** is used on code you attempt, while **except** is used to handle if an error occurs. **Else** is used if an error doesn't occur while **finally** always triggers. Furthermore, error can be raised with the **raise** command. An **assertion** is used during debugging as to deal with preconditions not being met. This results in an assertion error which can be resolved.
+
+**Defensive copying**, is a technique used to avoid privacy leaks. This issue occurs when a getter method returns a pointer to the private attribute. This pointer can then be used to change values without the validation of a setter. To avoid this it is common to copy the result and return a copy. This stops the data from being changed.

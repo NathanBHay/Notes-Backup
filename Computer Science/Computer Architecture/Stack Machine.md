@@ -1,0 +1,5 @@
+A stack machine is a [[CPU|processor]] or virtual machine where the hardware uses a [[Abstract Datatypes#Stack|stack]] as its primary form of [[Memory#Secondary Memory|memory]]. These are an expansion of a [[Automata Theory#Pushdown Automata|push-down automaton]] with load/store operations to make them Turing complete. Compared to [[Computer Architecture#Von Neumann Architecture|traditional architectures]] stack machines decrease the amount of registers required.
+
+A stack machine functions my maintaining a stack that is accessed through a stack pointer. Push and pop operations increment and decrement this pointer respectively. In addition to the SP the machine also maintains a stack base, which is the location in memory the stack starts, and the stack limit which ensures that $SP<SL$.
+
+Stack machines lack registers therefore the operands come from the top of the stack, with the output of instructions going onto the top. This approach is slower than equivalent register machines depending on stack memory speeds. Despite this they offer smaller storage requirements and time to fetch instructions.

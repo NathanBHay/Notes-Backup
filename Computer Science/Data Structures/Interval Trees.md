@@ -1,0 +1,1 @@
+An interval tree is a [[Search Trees#Binary Search Tree|binary search tree]] which holds intervals. This allows efficient repeated computation of overlapping intervals. Interval trees are used for cases where there is an arbitrary amount of overlapping intervals.

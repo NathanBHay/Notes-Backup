@@ -1,0 +1,2 @@
+Any-angle pathfinding are pathfinding algorithms that search for a Euclidean shortest path between two points on a grid while allowing turns to have any angle. This means rather than being restricted to moving to in cardinal directions or cardinal plus diagonals you can now enter cells through any angle and position with the cell. To find the shortest paths the route needs to be taut. A **taut** path is one such that the path used wraps around the obstacles of the grid. 
+

@@ -1,0 +1,5 @@
+Combinatorial algorithms are [[Optimisation|optimisation]] algorithms which focus on a set of data or solutions that is of a combinatorial nature. This means the search set must be both discrete, and usually extremely large. As a result these algorithms have to uses methods other than a [[Algorithmic Paradigms#Brute Force|brute force]] approach to solving the problem. Combinatorial problems are commonly considered NP-complete or NP-hard and as a result have many proposed solutions to the problems. Combinatorial problems can be solved by a few different approaches:
+- **Metaheuristics or Search** algorithms can be used on a combinatorial problem due to each possible solution to the problem being viewable as an item in a search. From here an algorithm is able to search for a possible solution by using a heuristic to decrease the possible solutions.
+- **Approximation** algorithms attempt to approximate an answer by running in linear time.
+
+Through these possible approaches solutions can be found.

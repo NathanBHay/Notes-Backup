@@ -1,0 +1,1 @@
+Simulated annealing is an approximation technique for [[Optimisation|discrete optimisation]] problems. This approach is good for cases where the search space is too large, and a general approximation is all that is required. The algorithm works by randomly changing a value in a direction

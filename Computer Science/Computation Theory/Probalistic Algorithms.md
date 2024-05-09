@@ -1,0 +1,5 @@
+A probabilistic algorithm is an algorithm designed to use random sampling to find a solution to a problem.
+
+A **probabilistic Turing machine** $M$ is a type of [[Turing Machine|non-deterministic TM]] which each step is called a coin-flip step and has two legal next moves. This assigns a probability to branches $b$ of $M$'s computation on input $w$. This defines the probability of branch $b$ to be $\Pr[b]=2^{-k}$, where $k$ is the number of coin-flip steps. Therefore the probability that $M$ accepts $w$ is $\Pr[M\text{ accepts }w]=\sum_{b\text{ is an accepting branch}}\Pr[b]$. $M$ decides a language $A$ with a error probability $\epsilon$ if $w\in A$ implies $\Pr[M\text{ accepts }w]\geq1-\epsilon$ and $w\notin A$ implies $\Pr[M\text{ rejects }w]\geq1-\epsilon$.
+
+$\text{BPP}$ is the [[Complexity Classes|class of languages]] which are decided by probabilistic polynomial time TMs with an error probability of $\frac{1}{3}$. $\text{RP}$ is similar but with an error of at least $\frac{1}{2}$ and inputs not in the language are rejected with a probability of $1$.
