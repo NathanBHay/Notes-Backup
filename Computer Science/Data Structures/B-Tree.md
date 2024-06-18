@@ -2,7 +2,7 @@ A B-Tree is a  [[Search Trees|search tree]] which allows for multiple children f
 
 A B-Tree's is a [[Tree Data Structures|rooted tree]]. A *node* $x$ in the tree holds a number keys that are stored in order. A node contains $t-1$ to $2t-1$ keys, where $d$ is the branching factor/**minimum degree**. Where a node is *full* if it has $2t-1$ keys.  *Leaf nodes* have a boolean value specifying whether they are a leaf node. All leaves have the same depth which is the height of the tee. *Internal nodes* contain pointers to at least $m/2$ to $m$ children. These pointers to the subtrees are "between" the keys, with all keys within the subtree being between keys.
 
-**Search** functions similar to doing a [[Searching Algorithms#Binary Search|binary search]] on each node, and if it finds the result to be between two keys it descends. 
+**Search** functions similar to doing a [[Searching Algorithms#Binary Search|binary search]] on each node, and if it finds the result to be between two keys it descends.  The approach below uses a basic linear search which functions with a $O(t\log n)$ complexity, where $t$ is the minimum degree.
 ```pseudo
 	\begin{algorithm}
 	\caption{BTreeSearch($x,k$)}
@@ -23,7 +23,7 @@ A B-Tree's is a [[Tree Data Structures|rooted tree]]. A *node* $x$ in the tree h
 	\end{algorithm}
 ```
 
-**Split** is an operation required by insertion that splits a node into two.
+**Split** is an operation required by insertion that takes a non-full node and an index $i$ such that $x.c_i$ is a full child of $x$ and splits this child at point $i$ creating an additional child where $i$ is the key in the parent.
 ```pseudo
 	\begin{algorithm}
 	\caption{BTreeSplit($x,i$)}
@@ -57,8 +57,7 @@ A B-Tree's is a [[Tree Data Structures|rooted tree]]. A *node* $x$ in the tree h
 	\end{algorithm}
 ```
 
-
-**Insertion** 
+**Insertion** in a BTree differs from most tree structures with it inserting the node closer to the top.
 ```pseudo
 	\begin{algorithm}
 	\caption{BTreeInsert($T, k$)}

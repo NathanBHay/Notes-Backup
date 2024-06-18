@@ -4,7 +4,7 @@ Automatons can be sub-classified based upon the traits it exhibits. **Finite aut
 
 The **complement** of a state machine can simply be found by converting all accepted states into non-accepted states and all non-accepted states into accepted states.
 
-**Kleene's Theorem** states that any language that can be defined by [[Formal Languages#Regular Languages|regular expressions]], finite automata, non-deterministic finite automata, and generalized non-deterministic finite automata can be defined by each other. This means conversions from NFA to GFA, or REGEX to DFA exists for any inputs.
+**Kleene's Theorem** states that any language that can be defined by [[Formal Languages#Regular Languages|regular expressions]], finite automata, non-deterministic finite automata, and generalised non-deterministic finite automata can be defined by each other. This means conversions from NFA to GFA, or REGEX to DFA exists for any inputs.
 
 # NFA vs DFA
 **Deterministic Finite Automata** (DFA) are finite automata that only have one valid result for a transition function. This means there operation is predictable as a series of steps. **Non-Deterministic automata** have a transition function which maps to multiple values. This distinction allows branches in the state which may result in a different paths being taken. Formally the transition function is defined as the [[Set Theory|power set]] of possible states or $\delta:\mathcal{Q}\times\Sigma_\varepsilon\to\mathcal{P}(\mathcal{Q})$ with the alphabet being the union between itself and an empty character $\Sigma\cup\{\varepsilon\}$.

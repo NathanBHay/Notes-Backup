@@ -21,7 +21,7 @@ Run-length encoding (RLE) is a way of compressing data in a lossless way by stor
 # Huffman Coding
 Huffman coding is a method of generating reliable prefix-free code words for characters. From the character frequencies it is able to find code words of length ordered by the frequency. Huffman's algorithm is used for finding a table of variable-length codes with a [[Algorithmic Paradigms#Greedy|greedy]] approach. 
 
-The algorithm works on a set of unique characters with their computed frequencies. To construct an encoding each character can be seen as a [[Graph Theory#Trees|leaf node]] within a [[Tree Data Structures#Binary Tree|binary tree]]. Therefore to find an encoding simply join the two characters with the smallest frequencies to form a new node which is connected to the tree, maintaining the invariant that $l<r$. Where the edge connecting the left node has weight $0$, and the right has weight $1$. After add the new node to the list of nodes, and remove the previous. Continue this until a full tree is constructed. Once this is done traverse the tree to every leaf concatenating the edges to find a binary string for every character.
+The algorithm works on a set of unique characters with their computed frequencies. To construct an encoding, each character can be seen as a [[Graph Theory#Trees|leaf]] within a [[Tree Data Structures#Binary Tree|binary tree]]. Therefore to find an encoding simply join the two characters with the smallest frequencies to form a new node which is connected to the tree, maintaining the invariant that $l<r$. Where the edge connecting the left node has weight $0$, and the right has weight $1$. After add the new node to the list of nodes, and remove the previous. Continue this until a full tree is constructed. Once this is done traverse the tree to every leaf concatenating the edges to find a binary string for every character.
 
 A common approach to computing this is using a [[Abstract Datatypes#Priority Queue|priority queues]] to hold the list priorities of letters and pointers to trees. This approach takes $O(n\log n)$ time where $n$ is the number of symbols. The alternative approach is the use of two [[Abstract Datatypes#Queue|queues]] that hold the weights, but aren't ordered by them. In this approach during each step the two lowest values are chosen from either queues. This results in a $O(n)$ time algorithm. Additionally to minimise variance caused by an unbalanced tree tie break by choosing the original queue.
 
@@ -57,7 +57,7 @@ The Burrows-Wheeler transform (**BWT**) also called **block-sorting compression*
 BWT can also be used for $O(m)$ [[Pattern Matching#BWT for Pattern Matching|pattern matching]] where $m$ is the size of the pattern, given the string has been compressed.
 
 ## Compression
-The *compression algorithm* functions by generating the cyclic rotations of the input $S$. This means that for $i\in[n,1]$ we find $S[i..]+S[..i]$, for example $cab$ is a rotation of $abc$. After all [[Counting Methods#Permutation|permutations]] are found, they are sorted. From this we find the compressible string as the last characters of the sorted table. A naive approach to this can be done in $n\log n$ with a basic rotation and a [[Sorting Algorithms|sort]]. An improvement to this uses [[Suffix Arrays#Prefix Doubling|prefix doubling]] to construct the array in $n\log^2 n$. Algorithms such as [[String Retrieval Structures#Ukkonen's Algorithm|Ukkonen's algorithm]] are able to further improve this generation to be linear.
+The *compression algorithm* functions by generating the cyclic rotations of the input $S$. This means that for $i\in[n,1]$ we find $S[i..]+S[..i]$, for example $cab$ is a rotation of $abc$. After all [[Counting Methods#Permutation|permutations]] are found, they are sorted. From this we find the compressible string as the last characters of the sorted table. A naive approach to this can be done in $n\log n$ with a basic rotation and a [[Sorting Algorithms|sort]]. An improvement to this uses [[Suffix Arrays#Prefix Doubling|prefix doubling]] to construct the array in $n\log^2 n$. Algorithms such as [[String Retrieval Structures#Ukkonen's Algorithm|Ukkonen's algorithm]] are able to further improve this generation to be $O(n)$.
 
 ## Inversion
 BWT can be reversed from the generated output of the function. This *inverse function* can be thought of as a series of concatenations and sorts. This inverse functions by inserting the encoded string into a matrix and sorting it. After this concatenate the encoded string to the the front of the sorted array in the matrix to create string pairs. After this sort the strings again. This process continues until the length of the string sorted. From this the row with the row with the terminating character at the front is the true string. When finding the inverse this sorting method usually isn't used however similar principles are used when finding the original input. 
@@ -67,4 +67,36 @@ $$pos=\text{Rank}(x)+\text{nOccurences}(x,L[1..i))$$
 Where $\text{Rank}(x)$ is the position where $x$ first appears in $F$. And where $\text{nOccurrences}(x,L[1..i])$ is the number of times $x$ appears in $L[1..i)$. 
 
 # LZ77
-LZ77 is an encoding which uses a [[Algorithmic Paradigms#Sliding Window|sliding window]] approach to compression. This window consists of a *search window* (also called the dictionary) and a *look-ahead buffer* (also called the buffer). 
+Lempel-Ziv algorithm (LZ77) is an encoding which uses a [[Algorithmic Paradigms#Sliding Window|sliding window]] approach to compression to find repeated substrings within the string. It uses a *search window* (also called the dictionary) and a *look-ahead buffer* (also called the buffer) to restrict the search of repeated substrings. The algorithm functions by finding the longest repeated occurrence from the dictionary in the buffer. This match is used to find $(\text{offset}, \text{length}, c)$ which is the distance from the start of the buffer to where the match starts in the dictionary, the length of the matched characters, and the first mismatched character. After this the dictionary adds $l+1$ where $l$ is the match length from the start of the buffer. With the buffer removing the front $l+1$ and adding $l+1$ to the end from the input.
+
+For example with a dictionary of $abcde$ and a buffer of $cda$ we would find $(3,2,a)$ as the distance from $c$ to $c$ in $abcdecda$ is $3$, with a match length of $|cd|=2$ and $a$ being the source of the mismatch. After this we remove $abc$ from the dictionary and $cda$ from the buffer and add it to the window now having $decda$ in the window. This continues until the input is done.
+
+The pseudocode for the algorithm is written below where $S$ is the input:
+```pseudo
+	\begin{algorithm}
+	\caption{LZ77($S, windowSize, bufferSize$)}
+	\begin{algorithmic}
+		\State $W \gets \emptyset$
+		\State $L \gets S[..bufferSize]$
+		\State $result \gets \emptyset$
+		\While{$S \neq \emptyset$}
+			\State $match \gets$ Longest repeated occurence of input in window
+			\State $d \gets$ distance to start of $match$
+			\State $l \gets$ \Call{length}{$match$}
+			\State $c \gets$ mismatched character
+			\State $result.$\Call{append}{$(d, l, c)$}
+			\State $W \gets W[l+1..] \doubleplus L[..l+1]$
+			\State $L \gets L[l+1..] \doubleplus S[..l+1]$
+			\State $S \gets S[l+1..]$
+        \EndWhile
+	    \Return $result$
+	\end{algorithmic}
+	\end{algorithm}
+```
+
+Decoding follows a process of using these triplets to produce the dictionary and buffer for each iteration. This allows the original word to be built from these triplets.
+
+## LZSS
+Lempel-Ziv-Storer-Szymanski is a variation of LZ77 reduces complexity of the result by keeping small length mismatches in a different format. This uses a bit flag at the start of the tuples to find the cases where:
+- Match lengths $\geq3$ kept as $(0, \text{offset}, \text{length})$ where offset and length are same as before.
+- Match lengths $<3$ kept as $(1, c)$, where $c$ is the mismatched char.

@@ -3,9 +3,12 @@ The **exact pattern matching problem** is given a string $T[1..n]$ and a pattern
 # Naive Approach
 The naive approach to pattern matching simply compares if at each letter within $T$ the pattern $P$ starts. Given the first letter matches now compare $T[i+j-1]=P[j]$ for each letter in the pattern. A full match returns the position. This approach in the worst case takes $(n-m+1)\cdot m$ or $O(mn)$ time complexity.
 
-A basic improvement to this algorithm is in shifts. An algorithm can decrease computations by remembering previous comparisons and jumping to the next case of $P[1]$. These shifts can decrease the characters  
+A basic improvement to this algorithm is in shifts. An algorithm can decrease computations by remembering previous comparisons and jumping to the next case of $P[1]$. These shifts can decrease the characters.
+
 # Gusfield's Z-Algorithm
-Gusfield's Z-Algorithm is a preprocessing algorithm used to find the structure of the string as to allow for faster exact pattern matching. The algorithm works by finding the Z-values of a given string. A **Z-value** is the length of the longest sub-string starting at position $i$ that matches its prefix (start), meaning $S[i..i+Z_i+1]=S[1..Z_i]$. The **Z-values** for a string are the set of values $\{Z_i,\text{ for }2\leq i\leq n\}$ for the string $S[1..n]$ . For a string the $Z_i$-box is defined as the interval of the longest sub-string or $[i..i+Z_i-1]$ of $S$. 
+Gusfield's Z-Algorithm is a preprocessing algorithm used to find the structure of the string as to allow for faster exact pattern matching. Z-algorithm provides a way to create a faster pattern matching algorithms with [[Pattern Matching#Boyer-Moore Algorithm|Boyer-Moore]] and [[Pattern Matching#Knuth-Morris-Pratt|Knuth-Morris-Pratt]] all using the algorithm to help with their skipping strategies.
+
+The algorithm works by finding the Z-values of a each character in a string. A **Z-value** is the length of the longest sub-string starting at position $i$ that matches its prefix (start), meaning $S[i..i+Z_i+1]=S[1..Z_i]$. The **Z-values** for a string are the set of values $\{Z_i,\text{ for }2\leq i\leq n\}$ for the string $S[1..n]$ . For a string the $Z_i$-box is defined as the interval of the longest sub-string or $[i..i+Z_i-1]$ of $S$. 
 
 For every string there exists $r$ which is the **right-most endpoint** of all Z-boxes at or before $i$. This means $r_i$ is the largest value of $j+Z_j-1$ over $1<j\leq i$. Every string also has a **left end** which is the left end of the z-box that ends at $r_i$.
 
@@ -21,7 +24,8 @@ The **second case** finds if $K$ is inside the right-most Z-box. In this situati
 - If $Z_{k-l+1}<r-k+1$ (and $k\leq r$) then $Z_k\gets Z_{k-l+1}$, as the box doesn't need to extend the string.
 - If $Z_{k-1+1}\geq r-k+1$ (and $k\leq r$) then the box needs to be extended by comparing $S[r+1]$ with $S[r-k+2]$ until a mismatch occurs. If a mismatch occurs at position $q\geq r+1$ then $Z_k\gets q-k$, $r\gets q-1$, and $l\gets k$.
 
-The algorithm can be used to find linear time pattern matches through a process of constructing $S$ from the concatenated string $P+\$+T$ and preprocessing it with the Z-algorithm.  Where there exists a match for any $i>m+1$ for all $Z_i$.
+## Z-Algorithm for Pattern Matching
+The algorithm can be used to find linear time pattern matches through a process of constructing $S$ from the concatenated string $P+\$+T$ and preprocessing it with the Z-algorithm.  Where there exists a match for any $i>m+1$ for all $Z_i$. This algorithm has a time complexity of $O(n+m)$.
 
 # Boyer-Moore Algorithm
 The Boyer-Moore algorithm improves upon the naive method by successively aligning the pattern with text and checks for complete alignment. After a mismatch the pattern is shifted with respect to the new alignment. This is handled through the addition of three new rules. Right-to-left scanning, bad character rule, and the good suffix rule.
@@ -52,7 +56,7 @@ Galil's optimisation is a way to decrease the amount of unnecessary comparisons 
 The Knuth-Morris-Pratt Algorithm (KMP) is a functionally worse version of the Boyer-Moore algorithm. It functions through a traditional method of finding cases where a jump is available. This works by finding the aligned prefixes of the pattern with the suffixes of the matched region of text. To achieve this you compute the $SP_i$-values which are the longest proper suffix for $P[1..i]$ that matches a prefix $P$, such that $P[i+1]\neq P[SP_i+1]$. This can be found by preprocessing the Z-values for the pattern and then for each value $j\in[m, 2]$ find $i\gets j+Z_j-1$ and then $SP_i\gets Z_j$. From this if a mismatch at position $i+1$ shift the pattern right by $i-SP_i$ places, otherwise if $P$ is found in $T$ shift the pattern by $m-SP_m$ places. This algorithm therefore has a worse case complexity of $O(m+n)$ 
 
 # BWT for Pattern Matching
-The [[Data Compression#Burrows-Wheeler Transform|Burrows-Wheeler Transform]] can be used for pattern matching in $O(m)$ time. This algorithm is particularly efficient for cases where the pattern is small and the text is large. The algorithm functions by first finding the BWT of $T$. After this initialize two pointers on the encoded string $sp\gets1$ and $ep\gets n$. These pointers can then be updated each iteration by finding:
+							The [[Data Compression#Burrows-Wheeler Transform|Burrows-Wheeler Transform]] can be used for pattern matching in $O(m)$ time. This algorithm is particularly efficient for cases where the pattern is small and the text is large. The algorithm functions by first finding the BWT of $T$. After this initialisessstwo pointers on the encoded string $sp\gets1$ and $ep\gets n$. These pointers can then be updated each iteration by finding:
 $$\begin{align}sp&\gets\text{rank}(P[i])+\text{nOccurences}(P[i], L[1..sp))\\ ep&\gets\text{rank}(P[i])+\text{nOccurences}(P[i], L[1..ep])-1\end{align}$$
 Where $i$ is from $m$ (length of $P$) to $1$. This works by finding the range of suffixes that start with the character $P[i]$ for every respective character until matches are found. Once the final $sp$ and $ep$ are found we know the range of suffixes that are equal to the pattern $[sp,ep]$. Using this range you can convert the positions to the original places within the string to find all occurrences. In cases where $ep<sp$ there are no valid matches.
 

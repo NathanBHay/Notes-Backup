@@ -19,7 +19,7 @@ To turn digital data into analog signals is a process called *modulation* and co
 # Protocols
 A protocol is a form of language which defines how two application layers talk between each other. Protocols takes the form of **headers** that are added during each [[Networks#Network Layers|network layer]] as to correctly route messages from one physical layer to another physical layer on another network. Each layer adds its own header in a process called **message encapsulation**.
 
-# Network Layersw
+# Network Layers
 To communicate through devices there are a multiple layers of abstraction which for which a message has to go through. Protocols guide this process and allow it to happen.
 
 ## Physical Layer

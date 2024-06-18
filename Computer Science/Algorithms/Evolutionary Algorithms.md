@@ -8,4 +8,21 @@ Genetic algorithms in particular use concepts found within genetics as to propos
 - **Crossover** which combines two parents together for the next generation.
 - **Mutation** which randomly changes a parent to add to the next generation.
 
-Effects from these functions will lead to a selection process which will eventually remove mediocre results as it refines its search. The process of generation continues until a halting condition is reached.
+Effects from these functions will lead to a selection process which will eventually remove mediocre results as it refines its search. The process of generation continues until a halting condition is reached. This can be described algorithmically as:
+```pseudo
+	\begin{algorithm}
+	\caption{GeneticAlgorithm($P(\cdot)$)}
+	\begin{algorithmic}
+		\State $t\gets 0$
+		\State Initialize $P(t)$
+		\State Evaluate $P(t)$
+		\While{Not Termination Criterion}
+			\State $t\gets t+1$
+			\State Select $P(t)$ from $P(t-1)$
+			\State Alter $P(t)$ with Crossover or Mutation
+			\State Evaluate $P(t)$
+        \EndWhile
+        \Return $P(t)$
+	\end{algorithmic}
+	\end{algorithm}
+```

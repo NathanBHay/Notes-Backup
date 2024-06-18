@@ -49,4 +49,8 @@ A dictionary is a datatype which stores a key, and a value. This is similar to a
 - **Search** gets an item and returns the key.
 - **Find** gets the key and returns the item.
 
-Commonly dictionaries are implemented with hash tables.
+# Set
+A set is a datatype which keeps an unordered collection of non-repeating elements. This structure is equivalent to sets found within [[Set Theory|set theory]]. Its main operation is add however it is common to include operations to combine sets. These operations are:
+- **Add**, which adds an item to a set, ensuring no duplicates.
+- **Union**, find the set of all elements in both sets.
+- **Intersection**, find the shared elements between two sets.

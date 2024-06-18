@@ -47,7 +47,22 @@ A common practice with secondary memory is [[Storage Virtualisation|data virtual
 **Kryder's law** states that the density of hard drives double every 13 months. Kryder's law doesn't take in account performance as HDD speeds haven't decreased at the same rate due to the limit of read/write head movement. SSD's are said to follow [[CPU#Moore's Law|Moore's law]] due to the use of transistors to store data.
 
 # Virtual Memory
-Virtual Memory is the abstraction of memory into an **address space** that a programmer is able to access without hardware level concerns. The address space is a mapping from the **physical memory** into a space that hides the boundary between devices, and optimises through caching mechanisms. Virtual memory is calculated through a **memory management unit** (MMU) which resides on the [[CPU]].
+Virtual Memory is the abstraction of memory into an **address space** that a programmer is able to access without hardware level concerns. The address space is a mapping from the **physical memory** into a space that hides the boundary between devices, and optimises through caching mechanisms. Virtual memory is calculated through a **memory management unit** (MMU) which resides on the [[CPU]]. There are two main approaches to virtual memory **paged memory** and **segmented memory**.
+
+## Paged Memory
+Paged virtual memory uses equally sized blocks called *pages* to represent virtual memory. Pages are kept within a table with the high-order bits indexing into the pages  and the low-order bits finding the word within the page. These high-order bits commonly being called the *virtual page number*. The page table is placed within main memory with calls to a virtual address not found within the table causing the page to be retrieved from secondary storage. This process is called **paging** or page fault which is done by the *page fault handler*.
+
+**Multi-level page tables** are an approach that improves performance by having multiple tables for different parts of the word. This enables a faster lookup at the cost of increased fragmentation and overall overhead.
+
+**Internal fragmentation** is an effect of paged memory where when pulling data from the secondary memory the data isn't in the same increments and thus, some additional memory is unused within the page. 
+
+## Segmented Memory
+Segmented virtual memory uses dynamically sized segments which are the size of the required data. A *segment fault* happens as a result of a miss, and is resolved by copying memory into virtual memory. In the event of virtual memory being full segments are removed until space can be made for the new segment. Segment tables are usually smaller than 
+
+**External fragmentation** happens to segmented memory as a result of removing blocks to fit new memory leads to left over memory between the blocks.
+
+## Translation Lookaside Buffer
+Since a page and segment space can't be held within a register file a memory access is required to access virtual memory. To speed this process up a translation lookaside buffer is used which stores recent translations of virtual memory into physical therefore improving translation times. It therefore stores a table of entries for a certain amount of pages.
 
 ## Memory Allocation
 Memory is allocated within a computer through the use of [[Memory#Virtual Memory|virtual memory]]. This process leads to a section of the memory named the **heap** being kept as free space for [[Program Exectution|programs]] to allocate to. This model of heap data places data throughout this free space dynamically. The heap provides issues when considering multiple programs, as all memory can be accessed globally which leads to greater execution time as programs need to find where there memory is kept. To stop this a **stack** is put at the bottom of the heap. This stack follows the [[Abstract Datatypes#Stack|abstract datatype]] of the same name, and builds upwards towards the start of the heap by allocating values relative to the bottom. This process leads to separate **frames** being created where local values are kept for specific programs and functions.

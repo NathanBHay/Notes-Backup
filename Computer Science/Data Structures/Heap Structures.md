@@ -8,7 +8,7 @@ The most common heap operations are:
 - **Find-Max** (or find-min) that finds the maximum item of the heap.
 - **Extract-Max** (or extract-min) removes the maximum item from the heap and calls a heapify to ensure the heap constraint is maintained.
 - **Merge** which joins two heaps together to create a valid heap.
-- **Increase-key** (or decrease-key) which is used to update a key within the heap.
+- **Decrease-key** (or decrease-key) which is used to update a key within the heap.
 
 | Operation | find-min | extract-min | insert | decrease-key | meld |
 | --- | --- | --- | --- | --- | --- |
@@ -106,7 +106,7 @@ Therefore, if a subtree with root $x$ has $m$ nodes, then $s(x)$ is at most $\lo
 ```
 **Insertion** follows a process of creating a new tree with key and merging the new tree with the original. **Delete min** follows a similar process where the left and right subtrees are merge together replacing the original root. **Arbitrary deletion** is a non-standard operation that attempts to detach the subtree from the deleted node and replace with it with its own melded subtrees. After this the s-value needs to be updated and leftist tree property needs to be maintained. This happens in $O(\log n)$.
 
-**Naïve initialization** of a leftist tree takes $O(n\log n)$ since all nodes are individually merged into a single tree. A better approach can decrease complexity to $O(n)$ given the use of a queue of subtrees. Where a merge between the first and second tree in the queue is done before being added to the queue again until a single tree remains.
+**Naïve initialisation** of a leftist tree takes $O(n\log n)$ since all nodes are individually merged into a single tree. A better approach can decrease complexity to $O(n)$ given the use of a queue of subtrees. Where a merge between the first and second tree in the queue is done before being added to the queue again until a single tree remains.
 
 # Skew Heaps
 A skew heap is a simple binary tree that satisfies the heap property while also ensuring a meld faster meld than a regular binary heap. As a result their main operation is a merge which on-paper is faster as it is bounded by the $O(\log_\phi n)$ which is slightly faster than leftist. **Merge** is similar to a leftist heap merge however forces the swap rather than maintaining an extra invariant, therefore making it simpler. This results in an amortized $O(\log n)$ complexity. The pseudocode for a skew heap merge follows:
@@ -128,7 +128,7 @@ A skew heap is a simple binary tree that satisfies the heap property while also 
 ```
 
 # Binomial Heap
-A binomial heap is a type of heap that keeps a forest of [[Tree Data Structures|binomial trees]] that maintain the heap property. Furthermore, number of nodes in each of these trees is always a power of two. Recursively this can be defined as the binomial tree $B_0$ consists of a single node while for the binomial tree $B_k$ it can be obtained by linking two trees $B_k$ together. Therefore, in general $B_k$ has $2^k$ nodes. Another definition views $B_k$ consisting of a root and subtrees $B_{k-1},B_{k-2},\dots,B_0$. The root of $B_k$ has $k$ children and the tree has a rank, and height of $k$. From this the name is found as the root of $B_k$ has ${k}\choose{j}$ descendants at distance $j$.
+A binomial heap is a type of heap that keeps a forest of [[Tree Data Structures|binomial trees]] that maintain the heap property. Furthermore, number of nodes in each of these trees is always a power of two. Recursively this can be defined as the binomial tree $B_0$ consists of a single node while for the binomial tree $B_k$ it can be obtained by linking two trees $B_{k-1}$ together. Therefore, in general $B_k$ has $2^k$ nodes. Another definition views $B_k$ consisting of a root and subtrees $B_{k-1},B_{k-2},\dots,B_0$. The root of $B_k$ has $k$ children and the tree has a rank, and height of $k$. From this the name is found as the root of $B_k$ has ${k}\choose{j}$ descendants at distance $j$.
 
 The structure of a binomial heap usually has nodes that hold there parent, the key value, their degree, and their children. Some approaches use a binary tree where children are kept as two pointers that point to a sibling and a child.
 

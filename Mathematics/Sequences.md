@@ -52,6 +52,14 @@ This series allows the same rules as the one above. The **alternating series tes
 $$\sum_{n=1}^n (-1)^{n+1}u_n=u_1-u_2+u_3-u_4+\dots$$
 This series converges if all $u$'s are positive, if the values are non-increasing, and if $u_n=0$.
 
+# Geometric Series
+The geometric series is the sum of an infinite number of terms that have a constant ration between terms. This means series, as seen previously, can be represented as:
+$$\sum_{k\gets0}^\infty ar^k=a,ar,ar^2,ar^3,\dots$$
+The closed form of this can be expressed as the equation:
+$$\frac{a}{1-r}\text{ for }|r|<1$$
+To find the sum of the first $n$ terms we have the formula:
+$$\sum_{k\gets0}^n ar^{k-1}=\begin{cases}an&r=1\\a\Big(\frac{1-r^n}{1-r}\Big)&\text{otherwise}\end{cases}$$
+
 # Power Series
 A power series is a series which centers around a value $n$ which takes the form:
 $$\sum_{n=0}^\infty c_nx^n = c_0 + c_1(x-a) + c_2(x-a)^2 + \dots + c_n(x-a)^n$$

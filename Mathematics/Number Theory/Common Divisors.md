@@ -8,14 +8,14 @@ From the recurrence the **Euclidean algorithm** can derived which finds the grea
 	\begin{algorithm}
 	\caption{GCD(a,b)}
 	\begin{algorithmic}
-		\INPUT $a \geq b$
+		\Input $a \geq b$
 			
 		\WHILE{$b \neq 0$}
-			\STATE $r \gets b$
-			\STATE $b \gets a \bmod b$
-			\STATE $a \gets r$
-		\ENDWHILE
-		\RETURN a
+			\State $r \gets b$
+			\State $b \gets a \bmod b$
+			\State $a \gets r$
+		\Endwhile
+		\Return a
 	\end{algorithmic}
 	\end{algorithm} 
 ```

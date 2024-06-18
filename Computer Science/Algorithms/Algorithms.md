@@ -1,8 +1,7 @@
-An algorithm is a series of instructions which have a defined input-output relation. They are usually defined within mathematics using logical statements. These statements are then interpreted into [[Programming Languages|programming languages]]. Common algorithms include [[Sorting Algorithms|sorting algorithms]], [[Graph Shortest Distance|graph algorithms]], and more.
+An algorithm is a series of instructions which have a defined input-output relation. They are usually defined within mathematics using logical statements. These statements are then interpreted into [[Programming Languages|programming languages]]. Common algorithms include [[Sorting Algorithms|sorting algorithms]], [[A-Star|graph algorithms]], and more.
 
-[[Complexity Analysis]]
-
-[[Amortized Analysis]]
+# Analysis
+Analysis of algorithms is the process of determining the advantages and disadvantages of algorithms. There are various canonical approaches to the contrasting of algorithms. The main approach is through [[Complexity Analysis|complexity analysis]] which applies mathematics to algorithm runtime analysis. An expansion of this technique is seen in [[Amortized Analysis|amortized analysis]] which uses the principles of complexity analysis for [[Data Structures|data structures]].
 
 # Loop Invariant
 The loop invariant is a property of a loop which remains true before and after each iteration. Loop invariants can be expressed through [[Predicate Logic|predicate logic]] for a formal proof. A loop invariant is usually a statement that can be used to prove the correctness of an algorithm. This is done through validating that the loop meets its precondition such that it loops correctly, and then ensuring each iteration results in the correct output, and finally justifying its termination.

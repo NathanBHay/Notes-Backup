@@ -7,6 +7,8 @@ All keys come from a universe $\mathscr{U}$ typically consisting of integers or 
 
 **Hashing** is a solution to the direct addressing problem that reduces the universe to a manageable size which uses a **hash function** where $h:\mathscr{U}\to \{0,1,\dots,m-2\}$, maps all keys onto the reduced universe. The items are therefore stored in a table of size $m$ but at the added disadvantage of collisions due to hash functions assigning the same key.
 
+**Hash-sets** are an implementation of a [[Abstract Datatypes#Set|set]] datatype by simply removing the value pair.
+
 # Collision Resolution
 There are a variety of common collision resolution methods available. Some of the most common methods are:
 

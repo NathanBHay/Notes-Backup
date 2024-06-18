@@ -21,8 +21,12 @@ Many constraint programming languages use domains as a way to define value restr
 - **Interval** domains which restrict integers or rational numbers over a certain interval.
 - **Linear** domains where linear functions are used for the variables.
 - **Finite** domains where a finite set is used as the values.
+
 # Enumerables
 Enumerables are a common feature found within constraint programming languages. Enumerables function to provide a variable name to a given integer value. This allows for problems to take a more human readable form.
 
 # Constraint Solving
 Constraints programming languages are solved with a separate solver software. These solvers traditionally use a [[Graph Theory#Trees|tree]] search algorithm that [[Algorithmic Paradigms#Backtracking|backtracks]] to possible solutions.
+
+# Linear Programming
+Linear programming problems are combinatorial optimisation problems where all constraints are represented as linear relations.

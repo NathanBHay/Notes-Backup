@@ -3,10 +3,10 @@ $$ (n+k)\dots(n+1)n = (n+k) \times base + \dots + (n+1) \times base + n \times b
 The base of a numbering system determines the amount of characters within the system. There are many different number systems which are commonly used however the most popular include:
 - **Decimal** (Base-10) the standard counting system.
 - **[[Number Systems#Binary|Binary]]** (Base-2) used within computers.
-- **Hexadecimal** (Base-16) used to shorten most representations.
 - **Octal** (Base-8) used to shorten other representations.
+- **Hexadecimal** (Base-16) used to shorten most representations.
 
-Number systems commonly used a subscripted number to denote the base it is in.
+Number systems commonly used a sub-scripted number to denote the base it is in.
 
 # Binary
 Binary is a Base-2 numbering system that uses 0 and 1 to represent all numbers. This allows for representations of *False* and *True* within mathematics or *Off* and *On* for transistors. This makes binary pivotal within current computers. It is also commonly associated with the [[Datatypes#Boolean|Boolean]] datatype.
@@ -17,3 +17,6 @@ To represent negative numbers in binary there are three possible representations
 - **2's Compliment** adds 1 to the number as to create easier overflow detection as two numbers of the same magnitudes should never produce a result of an opposing one. While also removing negative 0.
 
 **Hex** to binary has 1 Hex digit to 4 binary. While **Octal** has 1 Octal digit to 3 binary. While Binary requires a normal conversion method.
+
+# Hexadecimal
+Hexadecimal is a Base-16 number system which is commonly used in computer science due to its ability to shorten binary numbers. The system uses the digits $0$ to $9$ and $A$ through $F$ to represent a digit. 

@@ -4,6 +4,7 @@ The analysis of [[Algorithms|algorithms]] the process of determining the require
 - **Counting Cache Misses**, is a method of determining the complexity by the number of memory references.
 - **Asymptotic Complexity**, which is defined as a limit of the step count.
 - **[[Amortized Analysis|Amortised Complexity]]**, which averages asymptotic complexity over operations.
+
 # Asymptotic Complexity
 Computational complexity is a relation used to measure the difficulty to compute a program. This relation is defined as $T(n)$ which is equal to the relative amount of instructions  or space required to compute input size $n$. This relation can be defined within two contexts, these are:
 - **Time Complexity** which is the time it takes given the input. Output-sensitive complexity is the time-complexity given an output.

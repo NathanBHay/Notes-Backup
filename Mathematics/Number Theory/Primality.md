@@ -13,6 +13,7 @@ Where $\pi(N)$ is the prime counting function that is number of primes less than
 $$a^p\equiv a\bmod p$$
 A special case of this is if $a$ is not divisible by $p$ then the theorem states $a^{p-1}\%p=1$ or written mathematically is equivalent to:
 $$a^{p-1}\equiv 1\bmod p$$
+This above case can be used for [[Primality Testing|primality testing]].
 
 # Square-Free Integers
 An integer is considered a square-free integer if its prime factorisation lacks multiple of the same number. This means a number such as $18$ with primes factors $2\cdot3^2$ wouldn't be considered square free. All prime numbers are square free

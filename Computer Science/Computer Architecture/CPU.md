@@ -35,6 +35,24 @@ The control store usually holds a set of operations at arbitrary places within t
 ## Hardwired
 The execution for RISC architecture usually involves direct decoding of instructions as control signals driven by dedicated circuits. This is potentially faster and simpler but at the cost of difficulty to debug and modify code. These models are based upon [[Automata Theory|state machines]] as the CPU moves from state determined by the instruction.
 
+## Very Long Instruction Word
+Very long instruction word are an approach to [[Parallelism#Instruction Level Parallelism|instruction-level parallelism]] that allows for concurrent operations on multiple execution units through instructions having multiple operations and operands. This makes it easier for ILP discovery. VLIW CPU's are able to be emulated by [[Assembly#RISC vs CISC|RISC and CISC]] architectures through conversion.
+
+# Multi-Processing
+Multi-processing is the process of running multiple processors in parallel as a form of [[Parallelism|parallelism]]. These processors share a common bus, memory and hardware. This allows for multiple separate programmers to run on different CPUs. **Asymmetrical multi-processing** runs the [[Operating System|OS]] on a separate core to the rest of the programs, while **symmetrical** is where OS and programs run on the same core.
+
+Multi-processing suffers from various bottlenecks, these include bus throughput which limits the volume of memory accesses and [[Cache|cache coherency]] where multiple processors overwrite the same data. To maintain coherency in this case *snooping techniques* are common to ensure writes to all other caches.
+
+**Amdahl's law** describes the achievable speedup of executing programs with serial and parallel computations which can be computed as: 
+$$\text{Speed Up}=\Big(\frac{s+p}{n}\Big)^{-1}$$
+Where $s$ is the time spent on serial components and $p$ is the time spent on parallel components
+
+# Graphics Processing Unit
+A Graphics processing unit is a [[Integrated Circuits|circuit]] which is used for graphics computations and general purpose [[Parallelism|parallelised]] loads. GPUs are optimised for fast and high bandwidth memory. 
+
+# Neural Processing Unit
+Neural processing unit (NPU) are processors specialised for [[Machine Learning|machine learning]] and [[Neural Networks|neural network]] loads. This is done through highly [[Parallelism|parallelised]] [[Floating Point Numbers|floating-point]] operations. Tensor processing units (TPU) are google's proprietary NPU format.
+
 # Context Switch
 A context switch happens when an interrupt occurs or scheduling leads to the changing of a task. This results in the saving of all current [[Memory#Registers|registers]] and creating a new state for the given task. This happens many times within a CPU as it jumps from process to process.
 
