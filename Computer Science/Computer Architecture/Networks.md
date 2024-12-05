@@ -58,7 +58,7 @@ Transport layer moves the data between networks as to find the final location of
 
 To establish a connection a **three-way handshake** between the client sending a SYN packet, a server replying with a SYN, ACK and acknowledgement number, and a client sending a ACK with a sequence and acknowledgement number. This connection is then closed with a **four-way handshake** where a client or server sends a **FIN** packet, which is acknowledged with an **ACK** and a **FIN** packet back, thus leading to the original device sending an **ACK** back.
 
-The transport layer also deals with **error control** and corrects them by resending discarded **frames** found within the [[Networks#Data Link Layer|data link layer]] by using the **Automatic Repeat Request** (ARQ). A **TCP packet** includes two numbers the **sequence number**, how many bytes transmitted already, and **acknowledgement number**, how many bytes received from the other side. Through this errors are found if packets are missed.
+The transport layer also deals with **error control** and corrects them by resending discarded **frames** found within the [[Networks#Data Link Layer|data link layer]] by using the **Automatic Repeat Request** (ARQ). A *TCP packet* includes two numbers the **sequence number**, how many bytes transmitted already, and **acknowledgement number**, how many bytes received from the other side. Through this errors are found if packets are missed.
 
 While **TCP** is the standard it does lead to bigger packets if sending shorter messages. To combat this **User Datagram Protocol** (UDP) is used for smaller messages. Each packets is sent individually and may arrive in any order, thus **connectionless**. As well as **compact** with only 8 bytes compared to 20 for TCP.
 

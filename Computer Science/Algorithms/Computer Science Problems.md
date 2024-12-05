@@ -1,14 +1,14 @@
-A problem within computer science can be defined as a formulated question which requires a agent to solve an issue. Formally a problem can be seen to have 5 components. These are:
+A problem within computer science can be defined as a formulated question which requires a agent to solve an issue.  Formally a problem can be seen to have 5 components. These are:
 - An **initial state** which is used to represent the starting position within the problem.
 - A description of the possible **actions** available to the agent.
 - A **transition model** which that represents the result of taking an action from a given state.
 - The **goal test** that checks if the given state fulfil the goal.
 - **Path cost** that assigns a numeric cost to each path through the transition model.
 
-The initial state, actions and transition model define the **state space** of the problem. This state space can be represented by a [[Graph Theory|graph]].
+The initial state, actions and transition model define the **state space** of the problem. This state space can be represented by a [[Graph Theory|graph]]. Commonly the path cost is used to calculate the overall cost of a solution.
 
 # Common Problems
-Computer science has many common problems which relate to real world technical issues and the given [[Algorithms#Computational Complexity|computational complexity]] associated with them. These problems are usually provide either simple solutions to a problem described to be computationally complex, or are combinatorial problems that are solved with heuristics or other methods. The following problems are a set of general problems that don't constitute their own page. For general problems related to graph theory check [[Graph Problems|general graph problems]].
+Computer science has many common problems, also called **toy problems** or **canonical problems** which relate to real world technical issues and the given [[Algorithms#Computational Complexity|computational complexity]] associated with them. These problems are usually provide either simple solutions to a problem described to be computationally complex, or are combinatorial problems that are solved with heuristics or other methods. The following problems are a set of general problems that don't constitute their own page. For general problems related to graph theory check [[Graph Problems|general graph problems]].
 
 ## Travelling Salesman
 The travelling salesman problem (TSP) is a problem which asks given a list of cities and their associated distances, which can be represented as a graph, find the possible [[Graph Theory|walk]]. This problem is NP-Complete.
@@ -33,7 +33,7 @@ $$\text{MaxValue}[i,c]=\begin{cases}
 \text{MaxValue}[i-1,c]&\text{if } w_i>c\\
 \max(\text{MaxValue}[i-1,c],\text{MaxValue}[i-1,c-w_i)&\text{otherwise}
 \end{cases}$$
-# N-Queens
+## N-Queens
 The N-queens problem finds the positions of $n$ queens that can be placed on a board.
 
 ## DP Problems
@@ -56,3 +56,18 @@ $$\text{DP}[i,j]=\begin{cases}
 \min_{i\leq j \leq k} (\text{DP}[i,k]+\text{DP}[k+1,j])+c_kc_jc_{i-1}&\text{if } i<j
 \end{cases}$$
 Therefore to find the solution simply find $\text{DP}[1,n]$, for the sequence.
+
+## K-Armed Bandits
+Multi-armed bandit models a [[Reinforcement Learning|reinforcement learning]] problem where a gambler is stationed at a row of slot machines.  This gambler needs to decide which machines to bet on as to maximise profits given their current information. More formally, the problem states that their are $k$ actions each with an expected reward. With each action $A_t$ at the timestep $t$ corresponds to a reward $R_t$ with an expected reward given by $q_*(a)=E[R_t|A_t=a]$, and a maximisation of $\arg\max_aq_*(a)$.
+
+The **action-value method** solution calculates the value from the mean reward of the given choice at a timestep. This allows for an estimation of the quality of the solution. 
+$$Q_t(a)=\frac{\sum_{i=1}^{t-1}R_i\cdot\delta_{A_t=a}}{\sum_{i=1}^{t-1}\delta_{A_t=a}}$$
+Where $\delta_{A_t=a}$ is $1$ if the predicate $A_t=a$ is true, otherwise $0$. This means as more data is added the prediction will converge to the true value. One approach to using this value is the **epsilon-greedy** strategy which behaves greedily at a probability of $\epsilon$. The algorithm follows:
+$$A_t=\begin{cases}\max Q_t(a)&\text{with probability }1-\epsilon\\\text{random action }a&\text{with probability }\epsilon\end{cases}$$
+This problem can be further modified with an maximum number of time-steps. An incremental implementation of this considers only its rewards and estimates after $n+1$ rewards. This then computes:
+$$Q_n=\frac{\sum_{i=1}^{n-1}R_i}{n-1}$$
+From this we can derive a part of the Q-learning equation for the next iteration:
+$$Q_{n+1}=Q_n\frac1n[R_n-Q_n]$$
+Adding uncertainty to this can be done by adding an [[Optimisation#Exploration vs Exploitation|exploration]] term.
+
+##

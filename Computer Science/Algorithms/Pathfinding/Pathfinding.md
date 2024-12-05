@@ -30,6 +30,7 @@ Turn constraints are an aspect of motion planning where the transition function 
 There are a variety of different approaches to solving pathfinding problems. These include through the use of algorithmic paradigms such as [[DP Pathfinding Algorithms|dynamic programming]], or families of algorithms such as [[A-Star]].
 
 **Bi-directional** searching algorithms are an approach to solving single pair pathfinding that searches from both sides as to find the shortest path. In many cases the bidirectional approach is considered faster as it ignores branches that lack a direct route to the path. For example a basic BFS search has a time complexity of $O(b^n)$ where $b$ is the branching factor while a bi-directional implementation decreases this to $O(n^\frac{n}{2})$. The best cases for bi-directional algorithms usually follow cases where an initial and end state are defined and the branching factor of both sides is the same.
+
 # Common Procedures
 Many algorithms use procedures to solve pathfinding problems. These include operations to compare quality of shortest paths, initialization of the problem, and finding the path once a solution is found.
 

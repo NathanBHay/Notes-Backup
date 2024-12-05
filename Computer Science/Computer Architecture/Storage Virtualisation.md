@@ -1,12 +1,9 @@
-Storage virtualisation are a set of techniques to improve efficiency or the recovery ability of multiple [[Memory#Secondary Memory|drives]], by viewing the storage as a singular pool.
-To achieve this a disc controller is implemented within software or hardware. Storage virtualisation is commonly implemented on servers and high-performance computers. 
-
-There are two approaches to storage virtualisation which are:
+Storage virtualisation are a set of techniques to improve efficiency or the recovery ability of multiple [[Memory#Secondary Memory|drives]], by viewing the storage as a singular pool. To achieve this a disc controller is implemented within software or hardware. Storage virtualisation is commonly implemented on servers and high-performance computers. There are two approaches to storage virtualisation which are:
 - **Block virtualisation** which views the data of drives as a set of slices, or blocks. From this the file system is optimised using these blocks as units.
 - **File virtualisation** (**NAS virtualisation**) deals with groups of files as the primary unit.
 
 # RAID
-Redundant Array of Inexpensive Disks  (**RAID**) is a suite of mass storage array techniques (called levels) that are controlled with controller software. 
+Redundant Array of Inexpensive Disks (**RAID**) is a suite of mass storage array techniques (called levels) that are controlled with controller software. 
 
 | Level  | Min Drives | Fault Tolerance | Space Eff                  |
 | ------ | ---------- | --------------- | -------------------------- |

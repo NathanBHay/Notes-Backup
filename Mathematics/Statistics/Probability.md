@@ -17,6 +17,9 @@ Conditional probability deals with the probability one event happens **given** a
 $$\Pr(A|B) = \frac {\Pr(A \cap B)} {\Pr(B)}$$
 From this we can find the probability of $A$ given $B$. Another way to find the conditional probability is through [[Bayesian Statistics|Bayes' theorem]].
 
+A variable can be **conditionally independent** given $Z$ if for all $x,y,z$:
+$$\Pr(x,y|z)=\Pr(x|z)\Pr(y|z)\quad\text{or}\quad\Pr(x|y,z)=\Pr(x|z)$$
+
 # Random Variables
 Within probability a random variable (RV) is defined as a function on sample space $\mathbb{R}$. The distribution of a random variable $X$ is described usually as $\Pr(X=x)$, where $x$ is each output within the function. $X$ is sometimes called the **event space**. Random variables are defined as a mapping from the event space $X$ to the sample space $\mathbb{R}$. These distributions satisfy two properties, the first being:
 $$\Pr(X=x)\in[0,1]\text{ for all }x\in X$$
@@ -38,8 +41,14 @@ Random variables can be added together two form new distributions. This process 
 Two random variables are **independent and identically distributed** if they are independent and their probability distribution satisfies:
 $$\Pr(X_1=x)=\Pr(X_2=x)$$
 
+# Chain Rule
+The chain rule, also called the general product rule, within probability allows a joint distribution to be written as an incremental product of conditional distributions. This operates on the simple idea of:
+$$\Pr(X\cap Y)=\Pr(Y|X)\Pr(X)$$
+This can be scaled up to allow for the writing of many values within a distribution which finds the generalised rule:
+$$\Pr(x_1,\dots,x_n)=\prod_{i=1}^n\Pr(x_i|x_1,\dots,x_{i-1})$$
+
 # Quantile Function
-The quantile function which is considered the inverse CDF.
+The quantile function which is considered the inverse CDF calcualtes the likelihood that a random variable is true in a range from some distribution.
 
 # Expected, Variance & Standard Deviation
 The expected value or the mean of the equation is the average value of a probability function. These are calculated differently for [[Continuous Probability#Expected Value|continuous]] and [[Discrete Probability#Expected Value|discrete]] distributions. The variance finds the extent to which values vary. A dataset with a high variance implies a spread of possible values over a larger interval. Similar to mean the variance is calculated in a different way for both distributions, however despite this there still exists a general formula. This is:

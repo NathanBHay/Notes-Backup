@@ -1,4 +1,8 @@
-All interaction with a computer done by a user is through I/O devices. In early computers the I/O was handled by punch tape and a read/write header. Modern computers use many I/O devices (internal and external) whether it be mice, keyboards, disc, sensors, or any other device. These devices communicate through **standardised interfaces** such as USB, SATA or HDMI. I/O devices communicate with the [[CPU]] through **I/O Registers** with each device having its own registers. There are two types of **I/O Registers** these are:
+All interaction with a computer done by a user is through I/O devices. In early computers the I/O was handled by punch tape and a read/write header. Modern computers use many I/O devices (internal and external) whether it be mice, keyboards, disc, sensors, or any other device. These devices communicate through **standardised interfaces** such as USB, SATA or HDMI. Some common types of I/O devices are:
+- **Block devices** which store information in fixed-size blocks, these are usually [[Memory#Secondary Memory|secondary memory]] devices.
+- **Character devices** which input or output a stream of characters, without regard to block structure. These include keyboards, audio and network interfaces.
+
+I/O devices communicate with the [[CPU]] through **I/O Registers** with each device having its own registers. There are two types of **I/O Registers** these are:
 - **Memory-Mapped I/O** use the same address space as user memory, with the same instructions.
 - **Port-Mapped I/O** uses a separate memory space for its own unique set of instructions.
 
@@ -25,4 +29,7 @@ Interrupts that happen during the ISR of other interrupts can be handled in a fe
 Interrupts used to be physical however currently they are done through **Advanced Programmable Interrupt Controller** (APIC).
 
 ## Software Interrupts
-**Software interrupts** also called machine checks, exceptions and traps are a type of interrupt caused by software with [[Defensive Programming|exceptions]] being an example of this. 
+**Software interrupts** also called machine checks, exceptions and traps are a type of interrupt caused by software with [[Defensive Programming|exceptions]] being an example of this.
+
+# Drivers
+A driver is device specific code for controlling I/O. Device drivers run in [[Operating System#Kernel Mode & System Calls|user mode]] with system calls for reading and writing device register. Driver code is usually organised around *upper* portions where the routines perform read and write operations to kernel buffers. While the *lower* portion handle interrupt services that transfer data between hardware and kernel buffers. Drivers enable I/O buffering and handling of inputs as to ensure a better experience.

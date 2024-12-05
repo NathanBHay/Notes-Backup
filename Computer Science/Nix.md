@@ -1,0 +1,15 @@
+Nix and NixOS are declarative way of managing packages as to ensure reproducibilty. This is done through the **Nix package-manager** which allows for configuration of packages through the `configuration.nix` file. This file uses the *Nix language* which is a functional programming language. **NixOS** furthers the thesis of the Nix package manager into an [[Operating System|operating system]]. Allowing for the configuration of most system files to be done through the configuration files. One of the biggest advantages of NIX is that it functions as an [[Infrastructure as Code|infrastructure as code]] platform that can be easily replicated across systems.
+
+Nix deployment follows a process of creating a build of the configuration files. This results in packages being placed within the *nix store* which is a folder used to contain packages. These packages are then sym-linked across the system to ensure that they can run. Due to this Nix isn't entirely [[Operating System#POSIX|POSIX]] compliant and some issues can be caused during this stage. Configurations within Nix are handled similarly with key files being generated and then linked across the system.
+
+# Nix Language
+The Nix language is a domain specific [[Functional Programming|functional language]] which is syntactically similar to [[Haskell]] and [[JavaScript|JSON]]. The language uses a standard type system with integers, strings, but with the addition of [[Operating System#File System|file paths]]. *File paths* are used to represent a usually local path to a file (local to ensure purity). The language also has lists and attribute sets. Where attribute sets are a [[Abstract Datatypes#Dictionary|dictionary]] like structure used as arguments. Functions can be declared with a lambda syntax `func = x: x`.
+
+# Flakes
+Nix-flakes are an experimental feature that allows for version locked dependencies to be declared. This ensures a reproducible environment as nixpkgs can be pinned to a certain version. Flakes are done through a declaration of inputs and outputs. *Inputs* function as a form of package that is dynamically fetched upon calling of nix-rebuild. Inputs can include nixpkg, github urls, other flakes, and packages. *Outputs* function as an entry point for the configuration, and take as arguments the inputs. Running upgrade creates a `flake.lock` file which determines the versions of the inputs.
+
+# Home-Manager
+Home-manager is a flake which expands Nix to support declarative dot-file configurations. This enables the nix-language to be used to modify installed packages configurations through modules provided by the developers. Home-manager is configured in a flake that allows for downloading packages and configuring of the user environment. This is done through generating dot-files that are sym-linked.
+
+# Nix Shells
+Nix-shells are a method of creating reproducible environments that exist independent from the system.

@@ -16,8 +16,12 @@ Some further connectives found within Mathematics are:
 - **Implies** or **conditional** written with the symbol $\to$ or $\Rightarrow$ and is always true except if the left side is true, and the right is false.
 - **If and Only If** (IFF) or **equivalence** written with the symbol $\leftrightarrow$ or $\Leftrightarrow$ and is true if both are True or False.
 
-# Tautologies & Contradictions
+# Theorem Proving
 A **Tautology** is a propositional statement which is true under all circumstances. While a **Contradiction** is false under all circumstances
+
+A statement is **satisfiable** if it is true in at least one case, therefore similar to a contradiction if all are not true then it is **unsatisfiable**.
+
+A sentence $\alpha$ **entails** a sentence $\beta$, written as $\alpha\models\beta$, if and only if $\beta$ is true in every model where $\alpha$ is true.
 
 # Logical Equivalence
 Logically Equivalent statements happen when two statements provide the same result. This equivalency can be used to simplify logical equations. Some common equivalence laws include:
@@ -65,7 +69,13 @@ This rule means that given the case where $A$ is true regardless of $B$, you can
 
 # Rules of Inference
 A rule of inference is a logical form of a function which takes a **premise** and then returns a **conclusion**. They are commonly written in the form:
-$$\frac{\text{Premise \#n}}{\text{Conclusion}}$$
-Some common inferential rules include:
+$$\frac{\text{Premise \#n}}{\text{Conclusion}}\quad\text{or}\quad\frac{\alpha\quad\beta}{\gamma}$$
+Where a premise is equivalent to statement $\alpha$ and $\beta$ leading to the conclusion $\gamma$. **Deductive inference** is deriving new facts from existing premises and conclusion. Inference rules can be used to prove and simplify a sentence. Some common inferential rules include:
 - **Contrapositive** which means the exactly the same in a different way. For example a double negation of a statement.
 - **Logical Consequence** means that one is the same as the other but the other isn't the same.
+- **Modus Ponens** which can be written as:
+$$\frac{\alpha\to\beta\qquad\alpha}{\beta}$$
+- **And elimination** which can be written as:
+$$\frac{\alpha\land\beta\qquad\alpha}{\alpha}$$
+- **Resolution** which can be written as:
+$$\frac{x\lor\alpha\qquad\lnot x\lor\beta}{\alpha\lor\beta}$$

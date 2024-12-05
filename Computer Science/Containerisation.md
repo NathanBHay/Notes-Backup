@@ -1,0 +1,1 @@
+Containerisation is the concept of software being wrapped in a container which includes all dependencies and software.

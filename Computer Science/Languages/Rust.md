@@ -67,7 +67,7 @@ Lifetime annotations are parametrized with `'` in front of them. For example `fn
 ## References
 **References** are variables which hold a pointer to a stack variable. This variables can be used within functions as to not drop the original variable as it does not own the original stack variable. This is called **borrowing**. References are immutable and can't be modified. 
 
-**Mutable references** are created with the `&mut` and allow for a reference to be called as a way to edit a heap variable. The main restriction is that if a mutable reference exists in a scope no other references can exist. This avoids race conditions or possible other errors.
+**Mutable references** are created with the `&mut` and allow for a reference to be called as a way to edit a heap variable. The main restriction is that if a mutable reference exists in a scope no other references can exist. This avoids [[Concurrency Control|race condition]] or possible other errors.
 
 # OOP
 Rust's uses an alternative object-orientated approach with types and interfaces rather than objects. To follow this standard implementations and traits become the main operations done to achieve this.

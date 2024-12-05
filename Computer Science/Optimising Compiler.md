@@ -1,0 +1,1 @@
+An optimising compiler is a [[Compilers|compiler]], or more apt a stage within a compiler, which transforms code as to optimise its execution. These changes attempt to remove redundant expressions, dead code, expensive operations, and more. 

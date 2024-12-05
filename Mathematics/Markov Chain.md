@@ -34,3 +34,5 @@ From the fundamental matrix we can compute the expected number of steps to be ab
 The fundamental matrix can be used to find the probability from where starting from $\pi_j$ it will be absorbed. This can be calculated as:
 $$B=NR$$
 An approximation of this can be calculated as $P_{ij}^k$ for a large value of $k$, as the limit of this is equivalent to $B$.
+
+[[Markov Decision Process]]

@@ -19,4 +19,3 @@ An integer is a single whole number that can be **signed** or **unsigned**. It's
 
 # Pointer
 A pointer is a hexadecimal number that stores a [[Memory|memory]] address. Most pointers point to a variable's memory address, which can be called by **dereferencing** the pointer. Pointers are commonly used for **indirect addressing** and allocation of blank sets of memory.
-

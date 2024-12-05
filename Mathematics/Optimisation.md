@@ -14,3 +14,10 @@ Discrete optimisation is the process of optimising data that can be considered d
 - **[[Combinatorial Algorithms]]**, which deals with problems of a finite set of solutions with no value restrictions.
 - **Integer programming**, which deals with problems where the input is restricted with integers.
 - **Constraint programming**, which uses constraints to formalise the problem.
+
+While not a form of mathematical optimisation most [[Artificial Intelligence|artificial intelligence]] algorithms are a form of an optimisation algorithm as they usually attempt to optimise a [[Pathfinding|plan]] or [[Markov Decision Process|policy]].
+
+# Exploration vs Exploitation
+Exploration and exploitation are two opposing ideas when it comes to the decision of optimisation meta-heuristics. **Exploration** is searching a larger search space in order to find a more optimal solution, while **exploitation** is limiting the search space to more promising candidates. Exploitation is usually considered more computationally efficient however restricts itself to local optima while exploration allows for more variety at the cost of more computations. The best heuristics balance these to ensure the algorithm is fast while also finding local optima.
+
+An **upper confidence bound** is a term commonly used to introduce exploration. This strategy is efficient as this bound will tighten based on the certainty of the prediction.

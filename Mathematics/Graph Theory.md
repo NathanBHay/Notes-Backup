@@ -1,4 +1,4 @@
-Graph theory is a branch of mathematics that deal with the [[Abstract Datatypes|abstract datatype]] of the graph. These graphs are defined through **nodes/vertices** and **edges** which connect to the nodes. These graphs normally are defined through a [[Set Theory|set]] of edges, and a set of vertices. They are used to represent the relation between entities within many fields.
+Graph theory is a branch of mathematics that deal with the [[Abstract Datatypes|abstract datatype]] of the graph. These graphs are defined through **nodes**/**vertices** and **edges** which connect to the nodes. These graphs normally are defined through a [[Set Theory|set]] of edges, and a set of vertices. They are used to represent the relation between entities within many fields.
 
 There are multiple types of graphs which commonly occur, those being:
 - **Simple Graph**, also just called a graph, can have one edge between nodes.
@@ -11,6 +11,7 @@ A walk is a sequence of vertices that are found within a graph that map a path f
 - **Trail** is a walk that traverses each edge at most once.
 - **Path** is a series of vertices with no repeats.
 - **Cycle** is a path that ends at the same point.
+- **Hamiltonian cycle** is a cycle that visits all vertices exactly once.
 - **Euler Trail** is a trail that uses every edge exactly once. A graph with $>2$ odd degree vertices has no Euler trail. A graph has to have only even degrees to have closed Euler trail. However, a connected graph with no odd degree has a closed Euler graph.
 
 # Graph Properties

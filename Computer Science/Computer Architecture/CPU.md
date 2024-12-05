@@ -11,6 +11,11 @@ There are a few different schemes for how to handle a busses operations. These a
 - **Centrally arbitrated** busses change the **bus master** with the **bus arbitrator** delegating these requests.
 - **Distributed arbitration** busses function through all devices being able to negotiate bus access. This is determined by a bus protocol which determines precedence.
 
+# Clocks
+A clock is used to schedule operations throughout devices on a computer. These clocks are usually made of a *crystal oscillator* which decrements a counter. This counter is on a system register for modern devices. In addition to time of day they provide device and software schedulers a way to order events. [[Operating System#Kernel Mode & System Calls|System Calls]] are able to access data from these clocks as to allow for [[Profiling|profiling]] in some cases.
+
+**Soft timers** are timers that don't enact interrupts to be checked, but rather are clocks created during [[Operating System#Kernel Mode & System Calls|kernel mode]] to be checked in user-mode once they are interrupted.
+
 # Control Unit
 The control unit (CU) directs the operation of the processor. The control unit also determines if the memory is in read or write mode and then tells the ALU operations to perform. It also performs the *fetch-decode-execute cycle* which is defined as:
 - **Fetch** where the *CU* gets the address of the *PC* and then increments it.
@@ -44,11 +49,16 @@ Multi-processing is the process of running multiple processors in parallel as a 
 Multi-processing suffers from various bottlenecks, these include bus throughput which limits the volume of memory accesses and [[Cache|cache coherency]] where multiple processors overwrite the same data. To maintain coherency in this case *snooping techniques* are common to ensure writes to all other caches.
 
 **Amdahl's law** describes the achievable speedup of executing programs with serial and parallel computations which can be computed as: 
-$$\text{Speed Up}=\Big(\frac{s+p}{n}\Big)^{-1}$$
-Where $s$ is the time spent on serial components and $p$ is the time spent on parallel components
+$$\text{Speed Up}=\Big(s+\frac{p}{n}\Big)^{-1}$$
+Where $s$ is the time spent on serial components and $p$ is the time spent on parallel components and $s+p=1$.
 
 # Graphics Processing Unit
-A Graphics processing unit is a [[Integrated Circuits|circuit]] which is used for graphics computations and general purpose [[Parallelism|parallelised]] loads. GPUs are optimised for fast and high bandwidth memory. 
+A Graphics processing unit is a [[Integrated Circuits|circuit]] which is used for graphics computations and general purpose [[Parallelism|parallelised]] loads. GPUs are optimised for fast and high bandwidth memory and operate with a master/slave [[Parallelism|SIMD]] approach.
+
+The **general purpose GPU** (**GPGPU**) is the idea of offloading CPU calculations to use the GPU. Some improvements distinct to GPGPUs are pipeline stages that are programmable as well as higher precision arithmetic units. [[Cache|Caching]] inside the  These improvements can be seen in workloads with matrix operations, machine learning, and other various computations that can be done in parallel.
+
+## GPU Stream Processing Model
+GPUs are de
 
 # Neural Processing Unit
 Neural processing unit (NPU) are processors specialised for [[Machine Learning|machine learning]] and [[Neural Networks|neural network]] loads. This is done through highly [[Parallelism|parallelised]] [[Floating Point Numbers|floating-point]] operations. Tensor processing units (TPU) are google's proprietary NPU format.

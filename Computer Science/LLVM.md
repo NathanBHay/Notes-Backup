@@ -1,0 +1,3 @@
+Low-level virtual machine (**LLVM**) is a compiler toolchain used for the generation of new compilers. This is achieved through a three-stage model where implementation of a compiler front-end is done to transform the language into LLVM intermediate representation. This enables optimisations of the IR and a unified back-end which compiles for different architectures.
+
+The optimiser functions through a series of optimising passes which apply transformations to the code. This is done through scanning for a matching conditions whereupon the code checks if the optimisation can be applied. Passes are handled by a pass manager which determines what optimisations are done and in what order.

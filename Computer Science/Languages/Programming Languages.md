@@ -21,3 +21,6 @@ Aliasing is a process that happens within languages that use call-by-reference a
 
 ## Classes Vs Prototypes
 Within [[Object Orientated Programming]] there are two approaches to objects, these are classes and prototypes. **Classes** based languages are the more common method, and function on two core concepts: instances and classes. Instances store the state for each object and have a reference to the instance's class. When a method is called the instance calls the class to get the classes' method. **Prototype** based languages merge these concepts into only objects. Each individual object may contain state and methods,
+
+# Domain Specific Language
+A domain specific language (**DSL**) is a programming language which is made primarily to fulfil a certain need. These languages can be [[Turing Machine|Turing complete]] although many aren't. There main purpose is to allow for developers to interface with a program. This contrasts a **general purpose language** which are complete and allow for a broader application.

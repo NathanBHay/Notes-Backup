@@ -1,4 +1,4 @@
-2SQL is a declarative programming language used to manage [[Databases|database]] structures. SQL is a standardised language which differs in syntax across management software. In a broad sense the goal of the language is to achieve 4 main operations. Those are:
+SQL is a declarative programming language used to manage [[Databases|database]] structures. SQL is a standardised language which differs in syntax across management software. In a broad sense the goal of the language is to achieve 4 main operations. Those are:
 - **Data manipulation**, the ability to add data and change it within a database.
 - **Data definition**, a method of creating the structures or schema within a database.
 - **Transaction control** which is the process of executing data manipulation operations within the context of a transaction. A transaction being a logical unit of work composing multiple statements.

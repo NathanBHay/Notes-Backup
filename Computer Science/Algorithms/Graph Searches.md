@@ -1,12 +1,16 @@
-Based on the principles of [[Graph Theory|graph theory]], a graph searching algorithm is similar to a [[Searching Algorithms|list searching algorithm]] however instead uses a graph [[Abstract Datatypes|abstract datatype]]. These searching algorithms are at the center of many other graphing algorithms due to the need to know if a graph contains an item. The following are a series of algorithms which solve the graph searching problem.
+Based on the principles of [Graph Theory|graph theory]], a graph searching algorithm is similar to a [[Searching Algorithms|list searching algorithm]] however instead uses a graph [[Abstract Datatypes|abstract datatype]]. These searching algorithms are at the center of many other graphing algorithms due to the need to know if a graph contains an item. The following are a series of algorithms which solve the graph searching problem.
 
-| Criterion | Breadth-First | Uniform Cost| Depth-First | Depth-Limited | Iterative Deepening | Bidirectional |
-| --- | --- | --- | --- | --- | --- | --- |
-| Complete | Yes$^a$ | Yes$^{a,b}$ | No | No | Yes$^a$ | Yes$^{a,d}$ |
-| Optimal | Yes$^c$ | Yes | No | No | Yes$^c$ | Yes$^{c,d}$ |
-| Time | $O(b^d)$ | $O(b^{1+\lfloor C^*/\epsilon\rfloor})$ | $O(b^m)$ | $O(b^\ell)$ | $O(b^d)$ | $O(b^{d/2})$ |
-| Space | $O(b^d)$ | $O(b^{1+\lfloor C^*/\epsilon\rfloor})$ | $O(bm)$ | $O(b\ell)$ | $O(bd)$ | $O(b^{d/2})$ |
+| Criterion           | Complete    | Optimal     | Time                                   | Space                                  |
+| ------------------- | ----------- | ----------- | -------------------------------------- | -------------------------------------- |
+| Breadth-First       | Yes$^a$     | Yes$^c$     | $O(b^d)$                               | $O(b^d)$                               |
+| Uniform Cost        | Yes$^{a,b}$ | Yes         | $O(b^{1+\lfloor C^*/\epsilon\rfloor})$ | $O(b^{1+\lfloor C^*/\epsilon\rfloor})$ |
+| Depth-First         | No          | No          | $O(b^m)$                               | $O(bm)$                                |
+| Depth-Limited       | No          | No          | $O(b^\ell)$                            | $O(b\ell)$                             |
+| Iterative Deepening | Yes$^a$     | Yes$^c$     | $O(b^d)$                               | $O(bd)$                                |
+| Bidirectional       | Yes$^{a,d}$ | Yes$^{c,d}$ | $O(b^{d/2})$                           | $O(b^{d/2})$                           |
 Where $b$ is the branching factor, $d$ is the depth of the shallowest solution, $m$ is the maximum depth of the tree, $\ell$ is the depth limit. The superscript caveats follow: $^a$ complete if $b$ is finite, $^b$ complete if step costs $\geq\epsilon$ for positive $\epsilon$, $^c$ optimal if step costs are identical, $^d$ if both directions use breadth-first search.
+
+Some searches can be classified as *memory bounded searches* which implement strategies that attempt to minimise the amount of memory used. Both beam and iterative deepening are examples of this.
 
 # Breadth-First Search
 Breadth-First Search is an algorithm which searches all adjacent nodes of a graph by generating a breath-first tree where all current adjacent nodes to the tree are added to the tree. The breadth first search algorithm has a basic pseudocode of:
@@ -121,3 +125,6 @@ Iterative Deepening is a more space efficient alternative to BFS and speed effic
 ```
 
 Where $\text{DLS}$ is a depth limited depth first search. This is usually implemented with an additional clause in depth first search which checks if $depth=0$.
+
+# Beam Search
+Beam search is an approach to limiting the memory usage of best-first search by restricting the amount of nodes in the frontier. This can be achieved through two different approaches. The first is to restrict by cost $\alpha$, which will remove nodes where $c(n)>\alpha$. The other is by number of nodes, where the number of nodes can be restricted either by using a [[Double Ended Heaps|double ended heap]] or 
